@@ -90,8 +90,8 @@ export default function MoviePage({ params }) {
                             </div>
                         </div>
 
-
-                        <img src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${movie.images}`} alt={actor.Actor_Name} className="w-32 h-32 object-cover rounded-md" />
+{/* 
+                        <img src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${movie.images}`} alt={actor.Actor_Name} className="w-32 h-32 object-cover rounded-md" /> */}
 
                     </div>
                 </div>
