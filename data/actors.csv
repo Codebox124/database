@@ -1,0 +1,101 @@
+ID,Legal_First_Name,Legal_Last_Name,Actor_Name,Birth_Date,Death_Date,Name_First_Movie,Year_First_Movie,Total_Movies
+1,Alice,Brady,Alice Brady,1892-11-02,1939-10-28,As Ye Sow,1914,58
+2,Alice,Joyce,Alice Joyce,1890-10-01,1955-10-09,The Octoroon,1913,45
+3,Alice,Taafe,Alice Terry,1900-07-24,1987-12-22,Civilization,1915,24
+4,Alice,Farrar,Geraldine Farrar,1882-02-28,1967-03-11,Carmen,1915,16
+5,Alva,White,Alice White,1904-08-25,1983-02-19,The Dice Woman,1926,45
+6,Anita,Pomares,Anita Page,1910-08-04,2008-09-06,A Kiss for Cinderella,1925,41
+7,Anna,Stewart,Anita Stewart,1895-02-07,1961-05-04,A Tale of Two Cities,1911,68
+8,Anna,Nilsson,Anna Q. Nilsson,1888-03-30,1974-02-11,The Express Envelope,1911,111
+9,Anna,Koenig,Mae Murray,1889-05-10,1965-03-23,To Have and to Hold,1916,44
+10,Annie,Busch,Mae Busch,1891-06-18,1946-04-19,"Hogan, the Porter",1915,132
+11,Apolonia,Chalupec,Pola Negri,1897-01-03,1987-08-01,Slave of Sin,1914,71
+12,Ara,Bennett,Belle Bennett,1891-04-22,1932-11-04,Who is the Savage?,1913,92
+13,Augusta,Appel,Lila Lee,1901-07-25,1973-11-13,The Cruise of the Make-Believes,1918,104
+14,Carmel,Myers,Carmel Myers,1899-04-04,1980-11-09,Georgia Pearce,1915,95
+15,Carol,Dempster,Carol Dempster,1901-12-09,1991-02-01,Intolerance,1916,20
+16,Clara,Cronk,Claire Windsor,1892-04-14,1972-10-23,The Pest,1919,64
+17,Clara,Bow,Clara Bow,1905-07-29,1965-09-27,Beyond the Rainbow,1922,61
+18,Clarisa,Kimball,Clara Kimball Young,1890-09-06,1960-10-15,Washington Under the British Flag,1909,163
+19,Constance,Bennett,Constance Bennett,1904-10-22,1965-07-24,The Valley of Decision,1916,70
+20,Contance,Talmadge,Contance Talmadge,1898-04-19,1973-11-23,Buddy's First Call,1914,84
+21,Corinne,Griffin,Corinne Griffith,1894-11-21,1979-07-13,La paloma,1916,73
+22,Dolores,Costello,Dolores Costello,1903-09-17,1979-03-01,A Midsummer Night's Dream,1909,69
+23,Dolores,Lopez Negrete,Dolores Del Rio,1904-08-03,1983-04-11,Joanna,1925,67
+24,Dorothy,Gish,Dorothy Gish,1898-03-11,1968-06-04,An Unseen Enemy,1912,136
+25,Dorothy,Mackaill,Dorothy Mackaill,1903-03-04,1990-08-12,The Face at the Window,1920,72
+26,Dorothy,Sabiston,Dorothy Sebastian,1903-04-26,1957-04-08,Sackcloth and Scarlet,1925,67
+27,Ealeanor,Compson,Betty Compson,1897-03-19,1974-04-18,Wanted: A Leading Lady,1915,210
+28,Ealeanor,Boardman,Eleanor Boardman,1898-08-19,1991-12-12,The Strangers' Banquet,1922,33
+29,Edith,Shearer,Norma Shearer,1902-08-10,1983-06-12,The Star Boarder,1919,67
+30,Elinor,Crowe,Elinor Fair,1903-12-21,1957-04-26,The End of the Trail,1916,54
+31,Eliza,Pitts,Zasu Pitts,1894-01-03,1963-06-07,Uneasy Money,1917,124
+32,Elizabeth,Slaughter,Betty Blythe,1893-09-01,1972-04-07,Slander,1916,164
+33,Elizabeth,Bronson,Betty Bronson,1906-11-17,1971-10-19,Anna Ascends,1922,45
+34,Esther,Worth,Esther Ralston,1902-09-17,1994-01-14,The Deep Purple,1915,110
+35,Ethel,Blythe,Ethel Barrymore,1879-08-15,1959-06-18,The Nightingale,1914,47
+36,Florence,Bridgwood,Florence Lawrence,1886-01-02,1938-12-28,The Automobile Thieves,1906,300
+37,Gladys,Hulette,Gladys Hulette,1896-07-21,1991-08-08,Romeo and Juliet,1908,143
+38,Gladys,Greene,Jean Arthur,1900-10-17,1991-06-19,Cameo Kirby,1923,97
+39,Gladys,Smith,Mary Pickford,1892-04-08,1979-05-29,Mrs. Jones Entertains,1909,258
+40,Gloria,Svensson,Gloria Swanson,1899-03-27,1983-04-04,The Fable of the Club Girls and the Four Times Veteran,1914,85
+41,Greta,Gustafsson,Greta Garbo,1905-09-18,1990-04-15,How Not to Dress,1920,34
+42,Gretchen,Young,Loretta Young,1913-01-06,2000-08-12,The Primrose Ring,1917,111
+43,Grethe,Ruzt-Nissen,Greta Nissen,1905-01-30,1988-05-15,"Daarskab, dyd og driverter",1923,
+44,Gwendolyn,La Pinski,Gwen Lee,1904-11-12,1961-08-20,Lady of the Night,1925,71
+45,Helen,Costello,Helene Costello,1906-06-21,1957-01-26,Les Miserables (Part 1),1909,102
+46,Jeanne,de la Fonte,Renee Adoree,1898-09-30,1933-10-05,500 Pounds Reward,1918,43
+47,Jobyna,Raulston,Jobyna Ralston,1899-11-21,1967-01-22,Starting Out in Life,1919,83
+48,Juanita,Horton,Bessie Love,1898-09-10,1986-04-26,Georgia Pearce,1915,158
+49,Julie,Goudeket,Jetta Goudal,1891-07-12,1985-01-14,Timothy's Quest,1922,21
+50,Juliet,Reilly,Mary Miles Minter,1902-04-25,1984-08-04,The Nurse,1912,54
+51,Kathleen,Morrison,Colleen Moore,1899-08-19,1988-01-25,The Prince of Graustark,1916,66
+52,Koncsics,Vilma,Vilma Banky,1898-01-09,1991-03-18,Im letzten Augenblick,1919,27
+53,Laura,Gainor,Janet Gaynor,1906-10-06,1984-09-14,Cupid's Rustler,1924,70
+54,Laura,LaPlante,Laura La Plante,1904-11-01,1996-10-14,The Great Gamble,1919,94
+55,Leatrice,Zeidler,Leatrice Joy,1893-11-07,1985-05-13,His Turning Point,1915,93
+56,Leila,Koerber,Marie Dressler,1968-11-09,1934-07-28,Tillie's Punctured Romance,1914,32
+57,Leonie,Flugrath,Shirley Mason,1900-06-06,1979-07-27,A Christmas Carol,1910,115
+58,Lillian,Bohny,Billie Dove,1903-05-14,1997-12-31,The White Bottle,1921,50
+59,Lillian,Gish,Lillian Gish,1893-10-14,1993-02-27,An Unseen Enemy,1912,122
+60,Liu-Tsong,Wong,Anna May Wong,1905-01-03,1961-02-03,The Red Lantern,1919,67
+61,Lois,Dowling,Lois Moran,1909-03-01,1990-07-13,La galerie des monstres,1924,40
+62,Lois,Wilson,Lois Wilson,1894-06-28,1988-03-03,The New Adventures of Terrence O'Rourke,1915,
+63,Louise,Fazenda,Louise Fazenda,1895-06-17,1962-04-17,The Romance of the Utah Pioneers,1913,265
+64,Louise,Dantzler,Mary Brian,1906-02-17,2002-12-30,Dynamite Dan,1924,85
+65,Lucile,Langhanke,Mary Astor,1906-05-03,1987-09-25,Brother of the Bear,1921,156
+66,Lulu,Kerlin,Louise Dresser,1878-10-05,1965-04-24,The Glory of Clementina,1922,51
+67,Mabel,Normand,Mabel Normand,1892-11-10,1930-02-22,Indiscretions of Betty,1910,222
+68,Margaret,Philpott,Madge Bellamy,1899-06-30,1990-01-24,The Riddle: Woman,1920,162
+69,Margaret,House,Marjorie Daw,1902-01-19,1979-03-18,The Love Victorious,1914,79
+70,Margherita,Evans,Madge Evans,1909-07-01,1981-04-26,Shore Acres,1914,101
+71,Marguerite,Clark,Marguerite Clark,1883-02-22,1940-09-25,Wildflower,1914,41
+72,Marguerite,De La Motte,Marguerite De La Motte,1902-06-22,1950-03-10,Arizona,1918,64
+73,Marion,Douras,Marion Davies,1897-01-03,1961-09-22,Runaway Romany,1917,53
+74,Mary,Brooks,Ann Little,1891-02-07,1984-05-21,The Indian's Maiden's Lesson,1911,43
+75,Mary,Burke,Billie Burke,1884-08-07,1970-05-14,Peggy,1916,91
+76,Mary,Riggs,Evelyn Brent,1895-10-20,1975-06-04,A Gentleman from Mississippi,1914,127
+77,Mary,Brooks,Louise Brooks,1906-11-16,1985-08-08,The Street of Forgotten Men,1925,25
+78,Mary,Marsh,Mae Marsh,1894-11-09,1968-02-13,Ramona,1910,208
+79,Mary,Dunn,Marie Prevost,1896-11-08,1937-01-23,His Father's Footsteps,1915,121
+80,Mary,Robertson,Mary Nolan,1902-12-18,1948-10-31,Wenn die Liebe nicht war'!,1925,39
+81,Mary,Dooley,Nita Naldi,1894-11-13,1961-02-17,Dr. Jekyll and Mr. Hyde,1920,33
+82,May,Allison,May Allison,1890-06-14,1989-03-27,A Fool There Was,1915,60
+83,May,McAvoy,May McAvoy,1899-09-08,1984-04-26,Hate,1917,98
+84,Mildred,Harris,Mildred Harris,1901-11-29,1944-07-20,The Post Telegrapher,1912,140
+85,Myrna,Williams,Myrna Loy,1905-08-02,1993-12-14,Pretty Ladies,1925,142
+86,Norma,Talmadge,Norma Talmadge,1894-05-26,1957-12-24,A Broken Spell,1910,65
+87,Olga,Purviance,Edna Purviance,1895-10-21,1958-01-11,A Night Out,1915,41
+88,Oliva,Duffy,Olive Thomas,1894-10-20,1920-09-10,Beatrice Fairfax,1916,25
+89,Patricia,Miller,Patsy Ruth Miller,1904-01-17,1995-07-16,One a Minute,1921,80
+90,Pauline,Libby,Pauline Frederick,1883-08-12,1938-09-19,The Eternal City,1915,70
+91,Pauline,Starke,Pauline Starke,1901-01-10,1977-02-03,The Claws of Greed,1914,71
+92,Pearl,White,Pearl White,1889-03-04,1938-08-04,His Yankee Girl,1910,229
+93,Phyllis,Daniels,Bebe Daniels,1901-01-14,1971-03-16,The Courtship of Miles Standish,1910,233
+94,Phyllis,O'Haver,Phyllis Haver,1899-01-06,1960-11-19,Sunshine,1916,105
+95,Reatha,Watson,Barbara La Marr,1896-07-28,1926-01-30,Harriet and the Piper,1920,27
+96,Sarah,Sweet,Blanche Sweet,1896-06-18,1986-09-06,A Man with Three Wives,1909,162
+97,Theodosia,Goodman,Theda Bara,1885-07-29,1955-04-07,The Stain,1914,45
+98,Vina,Wray,Fay Wray,1907-09-15,2004-08-08,Speed Bugs,1923,127
+99,Virginia,Noonan,Sally O'Neil,1908-10-23,1968-06-18,Don't,1925,40
+100,Virginia,Flugrath,Viola Dana,1897-06-26,1987-07-03,A Christmas Carol,1910,114
