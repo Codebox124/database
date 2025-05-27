@@ -264,14 +264,7 @@ export default function MoviePage({ params }) {
                 </div>
 
                 
-                <div className="mt-16 text-center">
-                    <div className="inline-flex items-center bg-white/5 backdrop-blur-sm px-8 py-4 rounded-full border border-white/10">
-                        <Film className="w-5 h-5 mr-3 text-blue-400" />
-                        <span className="text-gray-400">
-                            © {new Date().getFullYear()} Movie Database  - All rights reserved. Made with ❤️ for movie lovers.
-                        </span>
-                    </div>
-                </div>
+               
             </div>
         </div>
     );
