@@ -2,32 +2,72 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import actorsData from '../data/actors.json';
-import { Search, Film, Calendar, User } from 'lucide-react';
+import { Search, Film, Calendar, User, Star, Trophy, Sparkles, TrendingUp } from 'lucide-react';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
-  
+
   // Filter actors based on search term
-  const filteredActors = actorsData.filter(actor => 
+  const filteredActors = actorsData.filter(actor =>
     actor.Actor_Name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Get some featured stats
+  const totalMovies = actorsData.reduce((sum, actor) => sum + actor.Total_Movies, 0);
+  const featuredActors = actorsData.slice(0, 3); // First 3 actors as featured
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <h1 className="text-3xl font-bold text-gray-900">
-              <span className="text-blue-600">Movies</span> Database
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black text-white">
+      {/* Hero Section */}
+      <header className="relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-teal-900/20"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.2),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,119,198,0.1),transparent_50%)]"></div>
+        
+        <div className="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">
+                 Movie
+              </span>
+              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                DB
+              </span>
             </h1>
-            <div className="mt-4 md:mt-0 relative flex items-center w-full md:w-64">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-black" />
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              Discover the world's greatest actors and their cinematic journeys
+            </p>
+            
+            {/* Stats Bar */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
+                <div className="text-2xl font-bold text-blue-400">{actorsData.length}</div>
+                <div className="text-gray-400 text-sm">Actors</div>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
+                <div className="text-2xl font-bold text-purple-400">{totalMovies}</div>
+                <div className="text-gray-400 text-sm">Movies</div>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
+                <div className="text-2xl font-bold text-teal-400">50+</div>
+                <div className="text-gray-400 text-sm">Years</div>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
+                <div className="text-2xl font-bold text-yellow-400">★ 4.9</div>
+                <div className="text-gray-400 text-sm">Rating</div>
+              </div>
+            </div>
+
+            {/* Search Bar */}
+            <div className="relative max-w-2xl mx-auto">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Search className="h-6 w-6 text-gray-400" />
               </div>
               <input
                 type="text"
-                placeholder="Search actors..."
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 text-black bg-white  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Search for your favorite actors..."
+                className="block w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl leading-5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg transition-all"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -36,64 +76,182 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredActors.length > 0 ? (
-              filteredActors.map((actor) => (
-                <Link
-                  key={actor.ID}
-                  href={`/actor/${actor.ID}`}
-                  className="block bg-white overflow-hidden rounded-lg shadow hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 hover:scale-102"
-                >
-                  <div className="bg-blue-600 h-3"></div>
-                  <div className="p-6">
-                    <h2 className="text-xl font-bold text-gray-900 mb-2">{actor.Actor_Name}</h2>
-                    <div className="space-y-3 text-sm text-gray-600">
+      {/* Featured Section */}
+      {!searchTerm && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold flex items-center">
+              <Sparkles className="h-8 w-8 mr-3 text-yellow-400" />
+              Featured Actors
+            </h2>
+            <div className="flex items-center text-gray-400">
+              <TrendingUp className="h-5 w-5 mr-2" />
+              <span className="text-sm">Most Popular</span>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {featuredActors.map((actor, index) => (
+              <Link
+                key={actor.ID}
+                href={`/actor/${actor.ID}`}
+                className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-3xl overflow-hidden hover:from-white/15 hover:to-white/10 transition-all duration-500 transform hover:-translate-y-3 hover:shadow-2xl"
+              >
+                <div className="absolute top-4 right-4 z-10">
+                  <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold">
+                    #{index + 1} FEATURED
+                  </div>
+                </div>
+                
+                <div className="p-8">
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold group-hover:text-blue-400 transition-colors mb-2">
+                      {actor.Actor_Name}
+                    </h3>
+                    <div className="space-y-2 text-gray-300">
                       <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-2 text-blue-500" />
-                        <span className="font-medium text-gray-700">Born:</span>
-                        <span className="ml-2">{actor.Birth_Date}</span>
+                        <Calendar className="h-4 w-4 mr-2 text-blue-400" />
+                        <span className="text-sm">Born: {actor.Birth_Date}</span>
                       </div>
                       <div className="flex items-center">
-                        <Film className="h-4 w-4 mr-2 text-blue-500" />
-                        <span className="font-medium text-gray-700">First Movie:</span>
-                        <span className="ml-2">{actor.Name_First_Movie}</span>
+                        <Film className="h-4 w-4 mr-2 text-green-400" />
+                        <span className="text-sm">Debut: {actor.Name_First_Movie}</span>
                       </div>
                       <div className="flex items-center">
-                        <User className="h-4 w-4 mr-2 text-blue-500" />
-                        <span className="font-medium text-gray-700">Total Movies:</span>
-                        <span className="ml-2">{actor.Total_Movies}</span>
+                        <Trophy className="h-4 w-4 mr-2 text-yellow-400" />
+                        <span className="text-sm">{actor.Total_Movies} Movies</span>
                       </div>
                     </div>
                   </div>
-                  <div className="bg-gray-50 px-6 py-3">
-                    <div className="text-sm font-medium text-blue-600 hover:text-blue-500">
-                      View Profile →
+                  
+                  <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-xl p-4 border border-white/10">
+                    <div className="text-blue-400 font-semibold group-hover:text-blue-300 transition-colors">
+                      Explore Filmography →
                     </div>
                   </div>
-                </Link>
-              ))
-            ) : (
-              <div className="col-span-full text-center py-10">
-                <div className="text-gray-500 text-lg">No actors found matching "{searchTerm}"</div>
-                <button 
-                  onClick={() => setSearchTerm('')} 
-                  className="mt-4 px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* All Actors Grid */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-2xl font-bold">
+            {searchTerm ? `Search Results for "${searchTerm}"` : 'All Actors'}
+            <span className="ml-2 text-gray-400 text-lg font-normal">
+              ({filteredActors.length} {filteredActors.length === 1 ? 'actor' : 'actors'})
+            </span>
+          </h2>
+          {searchTerm && (
+            <button
+              onClick={() => setSearchTerm('')}
+              className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-sm font-medium transition-all"
+            >
+              Clear Search
+            </button>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredActors.length > 0 ? (
+            filteredActors.map((actor) => (
+              <Link
+                key={actor.ID}
+                href={`/actor/${actor.ID}`}
+                className="group bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:from-white/10 hover:to-white/15 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl"
+              >
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <User className="h-12 w-12 text-blue-400 bg-blue-400/20 rounded-xl p-2" />
+                    <Star className="h-5 w-5 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  
+                  <h3 className="text-lg font-bold group-hover:text-blue-400 transition-colors mb-3">
+                    {actor.Actor_Name}
+                  </h3>
+                  
+                  <div className="space-y-2 text-sm text-gray-400 mb-4">
+                    <div className="flex items-center">
+                      <Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                      <span>Born: {actor.Birth_Date}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Film className="h-4 w-4 mr-2 text-gray-500" />
+                      <span>Debut: {actor.Name_First_Movie}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Trophy className="h-4 w-4 mr-2 text-gray-500" />
+                      <span>{actor.Total_Movies} Movies</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 px-6 py-4 border-t border-white/10">
+                  <div className="text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+                    View Profile →
+                  </div>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="col-span-full">
+              <div className="text-center py-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl">
+                <Search className="h-16 w-16 text-gray-500 mx-auto mb-4" />
+                <div className="text-gray-400 text-xl mb-2">No actors found</div>
+                <div className="text-gray-500 mb-6">
+                  No actors match your search for "{searchTerm}"
+                </div>
+                <button
+                  onClick={() => setSearchTerm('')}
+                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl font-semibold transition-all"
                 >
                   Clear Search
                 </button>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </main>
-      
-      <footer className="bg-white border-t border-gray-200 mt-8">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-500 text-sm">
-            © {new Date().getFullYear()} Movies Database - All rights reserved
-          </p>
+
+      {/* Footer */}
+      <footer className="bg-black/80 border-t border-gray-800 mt-16">
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div className="md:col-span-2">
+              <h3 className="text-2xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                   MovieDB
+                </span>
+              </h3>
+              <p className="text-gray-400 mb-4">
+                Your ultimate destination for exploring the world of cinema and discovering legendary actors.
+              </p>
+            </div>
+            {/* <div>
+              <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">All Actors</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Featured</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Latest</a></li>
+              </ul>
+            </div> */}
+            {/* <div>
+              <h4 className="font-semibold mb-4 text-white">About</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Terms</a></li>
+              </ul>
+            </div> */}
+          </div>
+          <div className="border-t border-gray-700 pt-8 text-center">
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()}  MovieDB - All rights reserved. Made with ❤️ for movie lovers.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
