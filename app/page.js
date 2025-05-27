@@ -38,26 +38,7 @@ export default function Home() {
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
               Discover the world's greatest actors and their cinematic journeys
             </p>
-            
-            {/* Stats Bar */}
-            {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
-                <div className="text-2xl font-bold text-blue-400">{actorsData.length}</div>
-                <div className="text-gray-400 text-sm">Actors</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
-                <div className="text-2xl font-bold text-purple-400">{totalMovies}</div>
-                <div className="text-gray-400 text-sm">Movies</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
-                <div className="text-2xl font-bold text-teal-400">50+</div>
-                <div className="text-gray-400 text-sm">Years</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
-                <div className="text-2xl font-bold text-yellow-400">★ 4.9</div>
-                <div className="text-gray-400 text-sm">Rating</div>
-              </div>
-            </div> */}
+          
 
             {/* Search Bar */}
             <div className="relative max-w-2xl mx-auto">
