@@ -66,7 +66,7 @@ export default function MoviePage({ params }) {
                 <div className="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
                   
                     <div className="relative">
-                        <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 h-56 md:h-96 relative overflow-hidden">
+                        <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 h-56 md:h-96 relative o">
                             <div className="absolute inset-0 bg-black/30"></div>
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                             
@@ -85,7 +85,7 @@ export default function MoviePage({ params }) {
                                 <div className="max-w-5xl">
                                     
                                     
-                                    <h1 className="text-4xl md:text-6xl font-bold mb-4">
+                                    <h1 className="text-2xl md:text-6xl font-bold mb-4">
                                         <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
                                             {movie.title}
                                         </span>
