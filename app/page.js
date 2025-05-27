@@ -57,65 +57,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Featured Section */}
-      {!searchTerm && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold flex items-center">
-              <Sparkles className="h-8 w-8 mr-3 text-yellow-400" />
-              Featured Actors
-            </h2>
-            <div className="flex items-center text-gray-400">
-              <TrendingUp className="h-5 w-5 mr-2" />
-              <span className="text-sm">Most Popular</span>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {featuredActors.map((actor, index) => (
-              <Link
-                key={actor.ID}
-                href={`/actor/${actor.ID}`}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-3xl overflow-hidden hover:from-white/15 hover:to-white/10 transition-all duration-500 transform hover:-translate-y-3 hover:shadow-2xl"
-              >
-                <div className="absolute top-4 right-4 z-10">
-                  <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold">
-                    #{index + 1} FEATURED
-                  </div>
-                </div>
-                
-                <div className="p-8">
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold group-hover:text-blue-400 transition-colors mb-2">
-                      {actor.Actor_Name}
-                    </h3>
-                    <div className="space-y-2 text-gray-300">
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-2 text-blue-400" />
-                        <span className="text-sm">Born: {actor.Birth_Date}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Film className="h-4 w-4 mr-2 text-green-400" />
-                        <span className="text-sm">Debut: {actor.Name_First_Movie}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Trophy className="h-4 w-4 mr-2 text-yellow-400" />
-                        <span className="text-sm">{actor.Total_Movies} Movies</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-xl p-4 border border-white/10">
-                    <div className="text-blue-400 font-semibold group-hover:text-blue-300 transition-colors">
-                      Explore Filmography →
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+    
 
       {/* All Actors Grid */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -147,7 +89,7 @@ export default function Home() {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <User className="h-12 w-12 text-blue-400 bg-blue-400/20 rounded-xl p-2" />
-                    <Star className="h-5 w-5 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    
                   </div>
                   
                   <h3 className="text-lg font-bold group-hover:text-blue-400 transition-colors mb-3">
@@ -207,30 +149,13 @@ export default function Home() {
                    Movie Database 
                 </span>
               </h3>
-              <p className="text-gray-400 mb-4">
-                Your ultimate destination for exploring the world of cinema and discovering legendary actors.
-              </p>
+            
             </div>
-            {/* <div>
-              <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">All Actors</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Featured</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Latest</a></li>
-              </ul>
-            </div> */}
-            {/* <div>
-              <h4 className="font-semibold mb-4 text-white">About</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Terms</a></li>
-              </ul>
-            </div> */}
+           
           </div>
           <div className="border-t border-gray-700 pt-8 text-center">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()}  Movie Database  - All rights reserved. Made with ❤️ for movie lovers.
+              © {new Date().getFullYear()}  Movie Database  - All rights reserved. 
             </p>
           </div>
         </div>
