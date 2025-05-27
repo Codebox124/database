@@ -32,7 +32,7 @@ export default function Home() {
                  Movie
               </span>
               <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                DB
+                Database 
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
@@ -40,7 +40,7 @@ export default function Home() {
             </p>
             
             {/* Stats Bar */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+            {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
                 <div className="text-2xl font-bold text-blue-400">{actorsData.length}</div>
                 <div className="text-gray-400 text-sm">Actors</div>
@@ -57,7 +57,7 @@ export default function Home() {
                 <div className="text-2xl font-bold text-yellow-400">★ 4.9</div>
                 <div className="text-gray-400 text-sm">Rating</div>
               </div>
-            </div>
+            </div> */}
 
             {/* Search Bar */}
             <div className="relative max-w-2xl mx-auto">
@@ -66,7 +66,7 @@ export default function Home() {
               </div>
               <input
                 type="text"
-                placeholder="Search for your favorite actors..."
+                placeholder="Search "
                 className="block w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl leading-5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg transition-all"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -223,7 +223,7 @@ export default function Home() {
             <div className="md:col-span-2">
               <h3 className="text-2xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                   MovieDB
+                   Movie Database 
                 </span>
               </h3>
               <p className="text-gray-400 mb-4">
@@ -249,7 +249,7 @@ export default function Home() {
           </div>
           <div className="border-t border-gray-700 pt-8 text-center">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()}  MovieDB - All rights reserved. Made with ❤️ for movie lovers.
+              © {new Date().getFullYear()}  Movie Database  - All rights reserved. Made with ❤️ for movie lovers.
             </p>
           </div>
         </div>

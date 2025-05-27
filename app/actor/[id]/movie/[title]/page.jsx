@@ -83,12 +83,7 @@ export default function MoviePage({ params }) {
                             
                             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
                                 <div className="max-w-5xl">
-                                    <div className="flex items-center mb-4">
-                                        <Sparkles className="w-6 h-6 text-yellow-400 mr-2" />
-                                        <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-sm font-bold">
-                                            FEATURED FILM
-                                        </span>
-                                    </div>
+                                    
                                     
                                     <h1 className="text-4xl md:text-6xl font-bold mb-4">
                                         <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
@@ -273,7 +268,7 @@ export default function MoviePage({ params }) {
                     <div className="inline-flex items-center bg-white/5 backdrop-blur-sm px-8 py-4 rounded-full border border-white/10">
                         <Film className="w-5 h-5 mr-3 text-blue-400" />
                         <span className="text-gray-400">
-                            © {new Date().getFullYear()} MovieDB - All rights reserved. Made with ❤️ for movie lovers.
+                            © {new Date().getFullYear()} Movie Database  - All rights reserved. Made with ❤️ for movie lovers.
                         </span>
                     </div>
                 </div>
