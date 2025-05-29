@@ -120,7 +120,7 @@ export default function MoviePage({ params }) {
                                                                     className="relative overflow-hidden rounded-xlshadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
                                                                 >
                                                                     <img
-                                                                        src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${img}`}
+                                                                        src={`${img}`}
                                                                         alt={movie.title || 'Movie image'}
                                                                         className="w-32 h-48 object-cover rounded-lg shadow-2xl "
                                                                     />
@@ -221,7 +221,7 @@ export default function MoviePage({ params }) {
                                                                 className="relative overflow-hidden rounded-xl border border-white/20 shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
                                                             >
                                                                 <img
-                                                                    src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${img}`}
+                                                                    src={`${img}`}
                                                                     alt={movie.title || 'Movie image'}
                                                                     className="w-full h-64 object-cover"
                                                                 />
