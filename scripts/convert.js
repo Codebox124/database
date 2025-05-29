@@ -8,7 +8,7 @@ cloudinary.config({
   api_secret: 'TIJOZq8bvX-fp1ZNGiGqORgHpkM'
 });
 
-// Fetch all images from Cloudinary and create a mapping
+// Fetch all images from Cloudinary and create a mapping with display names
 async function getCloudinaryImageMap() {
   try {
     console.log('🔍 Fetching images from Cloudinary...');
@@ -38,33 +38,34 @@ async function getCloudinaryImageMap() {
 
     console.log(`📋 Total images found: ${allResources.length}`);
 
-    // Create mapping with multiple strategies
+    // Create mapping with multiple strategies - now storing display names
     const imageMap = {};
     allResources.forEach(resource => {
       const fullPublicId = resource.public_id;
+      const displayName = resource.display_name || resource.public_id; // Use display_name if available
 
       // Strategy 1: Remove suffix (6-8 chars after last underscore)
       const withoutSuffix = fullPublicId.replace(/_[a-z0-9]{6,8}$/i, '');
-      imageMap[withoutSuffix] = fullPublicId;
+      imageMap[withoutSuffix] = displayName;
 
       // Strategy 2: Remove extension from strategy 1
       const withoutExtension = withoutSuffix.replace(/\.[^/.]+$/, '');
-      imageMap[withoutExtension] = fullPublicId;
+      imageMap[withoutExtension] = displayName;
 
       // Strategy 3: Store full public_id as-is
-      imageMap[fullPublicId] = fullPublicId;
+      imageMap[fullPublicId] = displayName;
 
       // Strategy 4: Try different suffix lengths (sometimes it's longer/shorter)
       for (let i = 5; i <= 10; i++) {
         const pattern = new RegExp(`_[a-z0-9]{${i}}$`, 'i');
         if (pattern.test(fullPublicId)) {
           const alternative = fullPublicId.replace(pattern, '');
-          imageMap[alternative] = fullPublicId;
-          imageMap[alternative.replace(/\.[^/.]+$/, '')] = fullPublicId;
+          imageMap[alternative] = displayName;
+          imageMap[alternative.replace(/\.[^/.]+$/, '')] = displayName;
         }
       }
 
-      console.log(`🔗 Mapping: ${withoutExtension} -> ${fullPublicId}`);
+      console.log(`🔗 Mapping: ${withoutExtension} -> ${displayName}`);
     });
 
     console.log(`✅ Created ${Object.keys(imageMap).length} mapping entries`);
@@ -85,7 +86,7 @@ async function getCloudinaryImageMap() {
 }
 
 async function main() {
-  // First, get the Cloudinary image mapping
+  // First, get the Cloudinary image mapping with display names
   const cloudinaryImageMap = await getCloudinaryImageMap();
 
   // Then process your CSV files
@@ -115,17 +116,17 @@ async function main() {
             console.log(`  Without ext: ${nameWithoutExt}`);
 
             // Try multiple matching strategies
-            let actualPublicId = null;
+            let displayName = null;
 
             // Strategy 1: Exact match with extension
             if (cloudinaryImageMap[transformedName]) {
-              actualPublicId = cloudinaryImageMap[transformedName];
-              console.log(`  ✅ Found (exact): ${actualPublicId}`);
+              displayName = cloudinaryImageMap[transformedName];
+              console.log(`  ✅ Found (exact): ${displayName}`);
             }
             // Strategy 2: Match without extension
             else if (cloudinaryImageMap[nameWithoutExt]) {
-              actualPublicId = cloudinaryImageMap[nameWithoutExt];
-              console.log(`  ✅ Found (no ext): ${actualPublicId}`);
+              displayName = cloudinaryImageMap[nameWithoutExt];
+              console.log(`  ✅ Found (no ext): ${displayName}`);
             }
             // Strategy 3: Case-insensitive search
             else {
@@ -134,24 +135,23 @@ async function main() {
 
               for (const [key, value] of Object.entries(cloudinaryImageMap)) {
                 if (key.toLowerCase() === lowerTransformed || key.toLowerCase() === lowerWithoutExt) {
-                  actualPublicId = value;
-                  console.log(`  ✅ Found (case-insensitive): ${actualPublicId}`);
+                  displayName = value;
+                  console.log(`  ✅ Found (case-insensitive): ${displayName}`);
                   break;
                 }
               }
             }
 
             // If still not found, this means the image doesn't exist in Cloudinary
-            if (!actualPublicId) {
+            if (!displayName) {
               console.log(`  ❌ NOT FOUND in Cloudinary: ${originalName}`);
-              actualPublicId = ''; // ✅ Empty string fallback
+              displayName = ''; // ✅ Empty string fallback
             }
 
-            // The actualPublicId from Cloudinary already includes the suffix and extension
-            const finalName = actualPublicId;
-            console.log(`  📸 Final: ${finalName}\n`);
+            console.log(`  📸 Final Display Name: ${displayName}\n`);
 
-            return finalName;
+            // Return the display name instead of public ID
+            return displayName;
           });
 
         return {
@@ -177,7 +177,7 @@ async function main() {
   });
 
   fs.writeFileSync('data/actors.json', JSON.stringify(actorMap, null, 2), 'utf8');
-  console.log('✅ actors.json generated with Cloudinary image names!');
+  console.log('✅ actors.json generated with Cloudinary display names!');
 }
 
 // Transform filename to Cloudinary format
