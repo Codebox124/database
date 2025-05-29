@@ -74,33 +74,74 @@ export default function MoviePage({ params }) {
 
 
                             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                                <div className="max-w-5xl">
+                                <div className="max-w-5xl flex justify-between items-center">
 
 
-                                    <h1 className="text-2xl md:text-6xl font-bold mb-4">
-                                        <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                                            {movie.title}
-                                        </span>
-                                    </h1>
+                                    <div>
+                                        <h1 className="text-2xl md:text-6xl font-bold mb-4">
+                                            <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                                                {movie.title}
+                                            </span>
+                                        </h1>
 
-                                    <div className="flex flex-wrap items-center gap-4 text-white/90 mb-6">
-                                        <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                            <Calendar className="w-4 h-4 mr-2 text-blue-400" />
-                                            <span className="font-medium">{movie.year}</span>
-                                        </div>
-                                        <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                            <Star className="w-4 h-4 mr-2 fill-yellow-400 text-yellow-400" />
-                                            <span className="font-medium">8.2</span>
-                                        </div>
-                                        <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                            <Clock className="w-4 h-4 mr-2 text-green-400" />
-                                            <span className="font-medium">2h 15m</span>
-                                        </div>
-                                        <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                            <Trophy className="w-4 h-4 mr-2 text-purple-400" />
-                                            <span className="font-medium">Drama</span>
+                                        <div className="flex flex-wrap items-center gap-4 text-white/90 mb-6">
+                                            <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                                                <Calendar className="w-4 h-4 mr-2 text-blue-400" />
+                                                <span className="font-medium">{movie.year}</span>
+                                            </div>
+                                            <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                                                <Star className="w-4 h-4 mr-2 fill-yellow-400 text-yellow-400" />
+                                                <span className="font-medium">8.2</span>
+                                            </div>
+                                            <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                                                <Clock className="w-4 h-4 mr-2 text-green-400" />
+                                                <span className="font-medium">2h 15m</span>
+                                            </div>
+                                            <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                                                <Trophy className="w-4 h-4 mr-2 text-purple-400" />
+                                                <span className="font-medium">Drama</span>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div className="">
+                                        {movie.images && Array.isArray(movie.images) && movie.images.length > 0 && (
+                                            <section className="">
+
+
+
+                                                <div >
+                                                    {movie.images.some(img => img && img.trim() !== '') ? (
+                                                        // Show actual images if there are valid image URLs
+                                                        movie.images
+                                                            .filter(img => img && img.trim() !== '') // Filter out empty strings
+                                                            .map((img, index) => (
+                                                                <div
+                                                                    key={index}
+                                                                    className="relative overflow-hidden rounded-xlshadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
+                                                                >
+                                                                    <img
+                                                                        src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${img}`}
+                                                                        alt={movie.title || 'Movie image'}
+                                                                        className="w-32 h-48 object-cover rounded-lg shadow-2xl "
+                                                                    />
+                                                                </div>
+                                                            ))
+                                                    ) : (
+
+                                                        <div className="relative overflow-hidden rounded-xl  ">
+                                                            <img
+                                                                src="/no-image.jpg"
+                                                                alt="No image available"
+                                                                className="w-32 h-48 object-cover rounded-lg shadow-2xl "
+                                                            />
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                            </section>
+                                        )}
+                                    </div>
+
 
                                 </div>
                             </div>
