@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, use } from 'react';
 import actors from '@/data/actors.json';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Film, Star, Award, Play, Info, Heart, Share2, Trophy, Clock } from 'lucide-react';
@@ -8,7 +8,9 @@ export default function ActorPage({ params }) {
   const [activeTab, setActiveTab] = useState('filmography');
   const [isLiked, setIsLiked] = useState(false);
 
-  const actor = actors.find((a) => a.ID === params.id);
+  // Unwrap the params Promise using React.use()
+  const resolvedParams = use(params);
+  const actor = actors.find((a) => a.ID === resolvedParams.id);
 
   if (!actor) {
     return (

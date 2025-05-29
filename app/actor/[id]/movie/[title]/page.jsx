@@ -47,13 +47,13 @@ export default function MoviePage({ params }) {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black text-white">
-        
+
             <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 via-blue-900/10 to-teal-900/10"></div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.1),transparent_50%)]"></div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,119,198,0.05),transparent_50%)]"></div>
-            
+
             <div className="relative max-w-7xl mx-auto p-4 md:p-6">
-             
+
                 <Link
                     href={`/actor/${id}`}
                     className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-all duration-200 mb-8 group bg-white/5 backdrop-blur-sm px-6 py-3 rounded-2xl border border-white/10 hover:bg-white/10"
@@ -64,33 +64,25 @@ export default function MoviePage({ params }) {
 
                 {/* Main Content */}
                 <div className="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
-                  
+
                     <div className="relative">
                         <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 h-56 md:h-96 relative o">
                             <div className="absolute inset-0 bg-black/30"></div>
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                            
-                        
-                            {movie.images && (
-                                <div className="absolute top-6 right-6 hidden md:block">
-                                    <img 
-                                        src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${movie.images}`} 
-                                        alt={movie.title}
-                                        className="w-36 h-52 object-cover rounded-2xl shadow-2xl border-4 border-white/20 backdrop-blur-sm"
-                                    />
-                                </div>
-                            )}
-                            
+
+
+
+
                             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
                                 <div className="max-w-5xl">
-                                    
-                                    
+
+
                                     <h1 className="text-2xl md:text-6xl font-bold mb-4">
                                         <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
                                             {movie.title}
                                         </span>
                                     </h1>
-                                    
+
                                     <div className="flex flex-wrap items-center gap-4 text-white/90 mb-6">
                                         <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
                                             <Calendar className="w-4 h-4 mr-2 text-blue-400" />
@@ -109,22 +101,7 @@ export default function MoviePage({ params }) {
                                             <span className="font-medium">Drama</span>
                                         </div>
                                     </div>
-                                    
-                                    {/* Action Buttons */}
-                                    {/* <div className="flex flex-wrap gap-4">
-                                        <button className="flex items-center bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-4 rounded-2xl font-bold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
-                                            <Play className="w-5 h-5 mr-3 fill-white" />
-                                            Watch Trailer
-                                        </button>
-                                        <button className="flex items-center bg-white/10 backdrop-blur-sm hover:bg-white/20 px-6 py-4 rounded-2xl font-medium transition-all duration-200 border border-white/20 hover:border-white/40">
-                                            <Heart className="w-5 h-5 mr-3" />
-                                            Add to Favorites
-                                        </button>
-                                        <button className="flex items-center bg-white/10 backdrop-blur-sm hover:bg-white/20 px-6 py-4 rounded-2xl font-medium transition-all duration-200 border border-white/20 hover:border-white/40">
-                                            <Share2 className="w-5 h-5 mr-3" />
-                                            Share
-                                        </button>
-                                    </div> */}
+
                                 </div>
                             </div>
                         </div>
@@ -182,20 +159,44 @@ export default function MoviePage({ params }) {
                                 </section>
 
                                 {/* Movie Images */}
-                                {movie.images && (
-                                    <section>
+                                {movie.images && Array.isArray(movie.images) && movie.images.length > 0 && (
+                                    <section className="relative my-12">
                                         <h2 className="text-3xl font-bold mb-6 flex items-center">
                                             <Award className="w-7 h-7 mr-4 text-yellow-400" />
                                             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                                                 Gallery
                                             </span>
                                         </h2>
-                                        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-                                            <img 
-                                                src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${movie.images}`} 
-                                                alt={movie.title}
-                                                className="w-full h-auto object-cover rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-500 border border-white/20"
-                                            />
+
+                                        <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                                                {movie.images.some(img => img && img.trim() !== '') ? (
+                                                    // Show actual images if there are valid image URLs
+                                                    movie.images
+                                                        .filter(img => img && img.trim() !== '') // Filter out empty strings
+                                                        .map((img, index) => (
+                                                            <div
+                                                                key={index}
+                                                                className="relative overflow-hidden rounded-xl border border-white/20 shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
+                                                            >
+                                                                <img
+                                                                    src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${img}`}
+                                                                    alt={movie.title || 'Movie image'}
+                                                                    className="w-full h-64 object-cover"
+                                                                />
+                                                            </div>
+                                                        ))
+                                                ) : (
+                                                    // Show "no image" placeholder if no valid images exist
+                                                    <div className="relative overflow-hidden rounded-xl border border-white/20 shadow-lg">
+                                                        <img
+                                                            src="/no-image.jpg"
+                                                            alt="No image available"
+                                                            className="w-full h-64 object-cover"
+                                                        />
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
                                     </section>
                                 )}
@@ -263,8 +264,8 @@ export default function MoviePage({ params }) {
                     </div>
                 </div>
 
-                
-               
+
+
             </div>
         </div>
     );
