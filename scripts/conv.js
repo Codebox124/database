@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const csv = require('csvtojson');
 
-const IMAGES_DIR = path.join('public', 'images'); 
+const IMAGES_DIR = path.join('public', 'images');
+const VIDEOS_DIR = path.join('public', 'videos');
 
 function getLocalImageMap() {
   const files = fs.readdirSync(IMAGES_DIR);
@@ -31,12 +32,28 @@ function getLocalImageMap() {
   return imageMap;
 }
 
+function getLocalVideoMap() {
+  const files = fs.existsSync(VIDEOS_DIR) ? fs.readdirSync(VIDEOS_DIR) : [];
+  const videoMap = {};
+
+  files.forEach(file => {
+    const fileWithoutExt = file.replace(/\.[^/.]+$/, '');
+    videoMap[fileWithoutExt] = file;
+    videoMap[file] = file;
+  });
+
+  console.log(`🎬 Mapped ${Object.keys(videoMap).length} local videos`);
+  return videoMap;
+}
+
 async function main() {
   const localImageMap = getLocalImageMap();
+  const localVideoMap = getLocalVideoMap();
 
   const actors = await csv().fromFile('data/actors.csv');
   const movies = await csv().fromFile('data/movies.csv');
   const images = await csv().fromFile('data/images.csv');
+  const videos = await csv().fromFile('data/videos.csv');
 
   const actorMap = actors.map(actor => {
     const actorId = actor.ID;
@@ -47,31 +64,48 @@ async function main() {
           .filter(image => image.Movie_ID.toString() === movie.ID.toString())
           .map(image => {
             const originalName = image.Image_Name;
-            
+
             // Try to find the image in localImageMap
             let fileName = localImageMap[originalName];
-            
+
             if (!fileName) {
-              // Try without extension
               const nameWithoutExt = originalName.replace(/\.[^/.]+$/, '');
               fileName = localImageMap[nameWithoutExt];
             }
-            
+
             if (!fileName) {
               console.log(`❌ NOT FOUND locally: ${originalName}`);
               return '';
             }
 
-            console.log(`✅ FOUND: ${originalName} -> ${fileName}`);
+            console.log(`✅ FOUND IMAGE: ${originalName} -> ${fileName}`);
             return `/images/${fileName}`;
           })
-          .filter(path => path !== ''); // Remove empty paths
+          .filter(path => path !== '');
+
+        // Handle video mapping
+        const movieVideo = videos.find(video => video.Movie_ID.toString() === movie.ID.toString());
+        let videoFile = null;
+
+        if (movieVideo) {
+          const rawName = movieVideo.Video_File;
+          const videoKey = rawName.replace(/\.[^/.]+$/, '');
+          const matchedVideo = localVideoMap[rawName] || localVideoMap[videoKey];
+
+          if (matchedVideo) {
+            console.log(`🎥 FOUND VIDEO: ${rawName} -> ${matchedVideo}`);
+            videoFile = `/videos/${matchedVideo}`;
+          } else {
+            console.log(`🚫 VIDEO NOT FOUND LOCALLY: ${rawName}`);
+          }
+        }
 
         return {
           title: movie.Movie_Name,
           year: movie.Movie_Release_Year,
           description: cleanText(movie.Brief_Description_of_Movie),
-          images: movieImages
+          images: movieImages,
+          video: videoFile
         };
       });
 
@@ -90,7 +124,7 @@ async function main() {
   });
 
   fs.writeFileSync('data/act.json', JSON.stringify(actorMap, null, 2), 'utf8');
-  console.log('✅ actors.json generated with /images/ paths for Next.js!');
+  console.log('✅ act.json generated with images and videos for Next.js!');
 }
 
 function cleanText(text) {

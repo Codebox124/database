@@ -24,21 +24,21 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-teal-900/20"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.2),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,119,198,0.1),transparent_50%)]"></div>
-        
+
         <div className="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">
-                 Movie
+                Movie
               </span>
               <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                Database 
+                Database
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
               Discover the world's greatest actors and their cinematic journeys
             </p>
-          
+
 
             {/* Search Bar */}
             <div className="relative max-w-2xl mx-auto">
@@ -53,11 +53,22 @@ export default function Home() {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
+
+            <div className="mt-8 flex justify-center">
+              <a
+                href="/Cover Letter Sample.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-lg font-semibold rounded-full shadow-lg transition-transform transform hover:scale-105"
+              >
+                📘 Download PDF book
+              </a>
+            </div>
           </div>
         </div>
       </header>
 
-    
+
 
       {/* All Actors Grid */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -89,13 +100,13 @@ export default function Home() {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <User className="h-12 w-12 text-blue-400 bg-blue-400/20 rounded-xl p-2" />
-                    
+
                   </div>
-                  
+
                   <h3 className="text-lg font-bold group-hover:text-blue-400 transition-colors mb-3">
                     {actor.Actor_Name}
                   </h3>
-                  
+
                   <div className="space-y-2 text-sm text-gray-400 mb-4">
                     <div className="flex items-center">
                       <Calendar className="h-4 w-4 mr-2 text-gray-500" />
@@ -111,7 +122,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 px-6 py-4 border-t border-white/10">
                   <div className="text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
                     View Profile →
@@ -146,16 +157,16 @@ export default function Home() {
             <div className="md:col-span-2">
               <h3 className="text-2xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                   Movie Database 
+                  Movie Database
                 </span>
               </h3>
-            
+
             </div>
-           
+
           </div>
           <div className="border-t border-gray-700 pt-8 text-center">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()}  Movie Database  - All rights reserved. 
+              © {new Date().getFullYear()}  Movie Database  - All rights reserved.
             </p>
           </div>
         </div>

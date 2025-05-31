@@ -1,4 +1,4 @@
-// app/actor/[id]/movie/[title]/page.jsx
+"use client"
 import React from 'react';
 import actors from '@/data/actors.json';
 import Link from 'next/link';
@@ -120,7 +120,7 @@ export default function MoviePage({ params }) {
                                                                     className="relative overflow-hidden rounded-xlshadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
                                                                 >
                                                                     <img
-                                                                        src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${img}`}
+                                                                        src={`${img}`}
                                                                         alt={movie.title || 'Movie image'}
                                                                         className="w-32 h-48 object-cover rounded-lg shadow-2xl "
                                                                     />
@@ -221,7 +221,7 @@ export default function MoviePage({ params }) {
                                                                 className="relative overflow-hidden rounded-xl border border-white/20 shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
                                                             >
                                                                 <img
-                                                                    src={`https://res.cloudinary.com/dfjm3z7es/image/upload/v1747841020/${img}`}
+                                                                    src={`${img}`}
                                                                     alt={movie.title || 'Movie image'}
                                                                     className="w-full h-64 object-cover"
                                                                 />
@@ -241,6 +241,53 @@ export default function MoviePage({ params }) {
                                         </div>
                                     </section>
                                 )}
+
+                                {/* Media Preview Section */}
+                                <section>
+                                    <h2 className="text-3xl font-bold mb-6 flex items-center">
+                                        <Play className="w-7 h-7 mr-4 text-pink-400" />
+                                        <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                                            Watch Preview
+                                        </span>
+                                    </h2>
+                                    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 flex flex-col sm:flex-row items-center gap-6">
+                                        {/* Thumbnail that links to video or fallback image */}
+                                        <a
+                                            href={movie.video || "#"} // dynamic video link from JSON
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block group relative overflow-hidden rounded-2xl shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
+                                        >
+                                            <video
+                                                src={movie.video} // dynamic video URL from JSON
+                                                poster={movie.images?.[0] || ""} // use first image as poster
+                                                className="w-64 h-40 object-cover rounded-xl shadow-lg"
+                                                onError={(e) => {
+                                                    e.target.style.display = 'none';
+                                                    const img = document.getElementById(`fallback-${movie.title}`);
+                                                    if (img) img.style.display = 'block';
+                                                }}
+                                                muted
+                                                playsInline
+                                            />
+                                            <img
+                                                id={`fallback-${movie.title}`}
+                                                src={movie.images?.[0] || "/fallback.jpg"} // use same image as fallback
+                                                alt="Movie preview"
+                                                className="w-64 h-40 object-cover rounded-xl shadow-lg hidden"
+                                            />
+                                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                                                <Play className="w-10 h-10 text-white opacity-80" />
+                                            </div>
+                                        </a>
+
+                                        <div className="text-gray-300 text-lg">
+                                            Click the thumbnail to preview the movie. If available, it will play a short clip; otherwise, it displays a poster image.
+                                        </div>
+                                    </div>
+
+                                </section>
+
                             </div>
 
                             {/* Sidebar */}

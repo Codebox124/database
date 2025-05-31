@@ -11,7 +11,9 @@
 !.yarn/versions
 
 public/images/*
+public/videos/*
 !public/images/.gitkeep
+!public/videos/.gitkeep
 
 # testing
 /coverage
